@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float totalHealth;
+    public GameObject player;
 
     public void Awake()
     {
@@ -25,6 +26,6 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-        gameObject.SetActive(false);
+        player.SetActive(false);
     }
 }

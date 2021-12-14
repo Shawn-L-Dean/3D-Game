@@ -5,13 +5,23 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public GameObject player;
-    public float damage;
+    public float damage = 20f;
+    public float timeActive = 1.5f;
 
-    private void OnCollisionEnter(Collision collision)
+    private void Start()
     {
-        if(collision.transform == player.transform)
+        Invoke("Delete", timeActive);
+    }
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(player != null && collision.gameObject.tag.Equals("Player"))
         {
             player.GetComponent<Health>().TakeDamage(damage);
         }
+    }
+
+    private void Delete()
+    {
+        Destroy(gameObject);
     }
 }

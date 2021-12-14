@@ -33,14 +33,14 @@ public class GameManager : MonoBehaviour
     {
         //Initalize variables upon restart.
         Manager = this;
-        health = 200;
+        health = 150;
         enemyCount = 0;
         enemiesInLevel = GameObject.FindGameObjectsWithTag("Enemy");
 
         if (SceneManager.GetActiveScene().name == "Level01")
         {
             enemyCount = enemiesInLevel.Length;
-            time = 180;
+            time = 100;
         }
     }
 
@@ -64,14 +64,17 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(GameOver()); //Game is over
             }
         }
-        if (EnemyLeftText != null)
+        if(EnemyLeftText != null)
         {
+            enemiesInLevel = GameObject.FindGameObjectsWithTag("Enemy");
+            enemyCount = enemiesInLevel.Length;
             EnemyLeftText.text = countPrefix + enemyCount.ToString();
             if(enemyCount == 0)
             {
                 StartCoroutine(GameOver()); //Game is over
             }
         }
+        
     }
 
     IEnumerator GameOver()
@@ -88,6 +91,15 @@ public class GameManager : MonoBehaviour
                     GameOverText.text = "You win! Returning to main menu...";
                     yield return new WaitForSeconds(4.0f);
                     SceneManager.LoadScene("MainMenu");
+                }
+            }
+            else if(enemyCount > 0)
+            {
+                if (SceneManager.GetActiveScene().name == "Level01")
+                {
+                    GameOverText.text = "You lose! Try again next time.";
+                    yield return new WaitForSeconds(4.0f);
+                    SceneManager.LoadScene("Level01");
                 }
             }
             else

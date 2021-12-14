@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2481661284594393846}
-  m_Layer: 0
+  - component: {fileID: 3695659300948890108}
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,6 +32,20 @@ Transform:
   m_Father: {fileID: 6163566614642549068}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &3695659300948890108
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762056335910660733}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.09133625
+  m_Height: 0.1826725
+  m_Direction: 1
+  m_Center: {x: 0.0021047592, y: -0.0004080534, z: 0.00023326278}
 --- !u!1 &7326513925677533036
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +58,7 @@ GameObject:
   - component: {fileID: 7530878406137498854}
   - component: {fileID: 4805916029405840260}
   - component: {fileID: 7873684359484816824}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,9 +152,9 @@ GameObject:
   - component: {fileID: 6163566614642549068}
   - component: {fileID: 3583742274313955258}
   - component: {fileID: 2687901315365131390}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,3 +202,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b187bc68bd434446bde5d581bfb1d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 5854404809808966639, guid: 2a4fc665c41fad247b1b7b46b2d62b9d, type: 3}
+  damage: 30
