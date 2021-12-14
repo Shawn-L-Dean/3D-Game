@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     //Text objects to manage
     public static GameManager Manager = null;
 
-    public GameObject[] enemiesInLevel = GameObject.FindGameObjectsWithTag("Enemy");
+    public GameObject[] enemiesInLevel;
     public TMP_Text EnemyLeftText;
     public string countPrefix = string.Empty;
     public static int enemyCount = 0;
@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         Manager = this;
         health = 200;
         enemyCount = 0;
+        enemiesInLevel = GameObject.FindGameObjectsWithTag("Enemy");
 
         if (SceneManager.GetActiveScene().name == "Level01")
         {
@@ -59,6 +60,14 @@ public class GameManager : MonoBehaviour
             time -= Time.deltaTime;
             TimerText.text = timerPrefix + Mathf.Round(time);
             if (time <= 0)
+            {
+                StartCoroutine(GameOver()); //Game is over
+            }
+        }
+        if (EnemyLeftText != null)
+        {
+            EnemyLeftText.text = countPrefix + enemyCount.ToString();
+            if(enemyCount == 0)
             {
                 StartCoroutine(GameOver()); //Game is over
             }
